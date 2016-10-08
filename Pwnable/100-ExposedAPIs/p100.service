@@ -1,0 +1,15 @@
+[Unit]
+Description=Pixels Camp CTF P100 Challenge
+After=network.target
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/docker run --name ctf-p100 -p 30877:30877 --rm --read-only ctf-p100
+KillSignal=SIGINT
+TimeoutStopSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

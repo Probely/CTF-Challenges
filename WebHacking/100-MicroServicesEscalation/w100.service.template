@@ -1,0 +1,14 @@
+[Unit]
+Description=Pixels Camp CTF W100 Challenge
+After=network.target
+
+[Service]
+User=__W100_USER__
+Group=__W100_GROUP__
+Type=simple
+WorkingDirectory=__W100_ROOT__
+ExecStart=__W100_ROOT__/w100-runserver.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

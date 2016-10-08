@@ -1,0 +1,4 @@
+*.pyc
+w100-venv
+w100.service
+data/db.json

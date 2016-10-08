@@ -1,0 +1,3 @@
+*.pyc
+p100-venv
+experiments/
