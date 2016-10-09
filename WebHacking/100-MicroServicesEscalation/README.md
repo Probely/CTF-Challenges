@@ -1,5 +1,5 @@
-W100
-====
+W100 - Exposed APIs
+===================
 
 Those guys at Nameless Corporation take everybody for fools, yet they believe
 nobody would ever target them. Nobody smart anyhow, from what I've seen so far.
@@ -21,20 +21,11 @@ Requests to `/users` require a `X-API-Token` header or `token=` query string par
 The credentials for `/token` are the same ones used for the CTF with an username
 matching the team number (e.g. use "team1" as the username for team #1, etc.).
 
+
 Flag
 ----
 
 `51d16f96e3ba1041f6e59cab866c04ed50c36d2763cc3623568a2d7ccf8d4761`
-
-
-Answer
-------
-
-When listing users you notice that there's a guy whose position is just "admin".
-Turns out you just need to change your own position to "admin" and, voilá, you
-can see everyone else's data.
-
-(This is based on a true story, BTW. And, no, it wasn't a hidden backdoor.)
 
 
 Installing

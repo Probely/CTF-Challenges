@@ -1,5 +1,5 @@
-P100
-====
+P100 - Exposed APIs
+===================
 
 We found that some highway information displays have their APIs exposed
 on the wild Internet. These displays have a single endpoint `/text`
@@ -41,19 +41,6 @@ that it just needs to be convertible into a string:
 
         def __str__(self):
             return self._text
-
-
-Answer
-------
-
-The solution is to POST a pickled object to `/text`, where this object
-has a `__reduce__` method that calls `os.getenv` to obtain the value of
-the `ADMIN_PASSWORD` environment variable.
-
-Check the `solution/solution.py` script for a minimal answer for this
-problem.
-
-Reference: https://lincolnloop.com/blog/playing-pickle-security/
 
 
 Installing
