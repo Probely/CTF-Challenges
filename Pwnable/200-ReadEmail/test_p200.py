@@ -13,7 +13,7 @@ def string_xor(s1, s2):
     for c1, c2 in zip(s1, s2):
         r.append(chr(ord(c1) ^ ord(c2)))
 
-    return ''.join(r)
+    return b''.join(r)
 
 
 if len(sys.argv) <= 2:

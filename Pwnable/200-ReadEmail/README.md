@@ -11,7 +11,8 @@ Your user is `pjsmith` from the previous step in the qualifiers
 Install
 -------
 
-The steps for installation are containted in the `Makefile`:
+For testing you can run `p200-runserver.sh`, or you can
+install it permanently with:
 
     $ make
     $ make install  # (needs sudo)
