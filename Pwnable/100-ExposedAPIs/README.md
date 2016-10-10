@@ -17,12 +17,6 @@ We also know they set an environment variable called `ADMIN_PASSWORD`
 for some scripts to use. Your mission is to obtain its contents.
 
 
-Flag
-----
-
-`thisIs!the&nSwer`
-
-
 Notes
 -----
 
@@ -34,13 +28,14 @@ To make the challenge easier, we can give the definition for the
 object being pickled. This is not necessary to solve it, but hints
 that it just needs to be convertible into a string:
 
+```python
+class DisplayText(object):
+    def __init__(self, text):
+        self._text = text
 
-    class DisplayText(object):
-        def __init__(self, text):
-            self._text = text
-
-        def __str__(self):
-            return self._text
+    def __str__(self):
+        return self._text
+```
 
 
 Installing
@@ -66,4 +61,5 @@ with `p100-runserver.sh` or `systemctl`) and run the tests with
 Tested on Ubuntu 16.04 x64.
 
 
--- Carlos Rodrigues
+--
+**Pixels Camp 2016** - Carlos Rodrigues

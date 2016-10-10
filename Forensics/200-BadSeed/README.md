@@ -12,12 +12,6 @@ The C source code for the `create_password()` function is provided along with a
 ".tar" file containing the client's encrypted files (four files).
 
 
-Flag
-----
-
-`a4a1717ec75dbd454f62a651fc554b291f129a82169bfe14e16271e40bd36feb`
-
-
 Testing
 =======
 
@@ -37,4 +31,5 @@ Turns out `srand()`/`rand()` gives different results across platforms, but
 and MacOS X 10.11 (El Capitan).
 
 
--- Carlos Rodrigues
+--
+**Pixels Camp 2016** - Carlos Rodrigues

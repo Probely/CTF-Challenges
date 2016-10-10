@@ -15,6 +15,12 @@ The answer is contained in `document4.txt`.
     $ date --date="2016-09-16 14:34:18.000000000 +0100" +%s
 
 
+Flag
+----
+
+`a4a1717ec75dbd454f62a651fc554b291f129a82169bfe14e16271e40bd36feb`
+
+
 Pitfalls
 --------
 

@@ -22,12 +22,6 @@ The credentials for `/token` are the same ones used for the CTF with an username
 matching the team number (e.g. use "team1" as the username for team #1, etc.).
 
 
-Flag
-----
-
-`51d16f96e3ba1041f6e59cab866c04ed50c36d2763cc3623568a2d7ccf8d4761`
-
-
 Installing
 ----------
 
@@ -58,4 +52,5 @@ if it's registered with systemd. Then run `make tests` to run the functional tes
 Tested on Ubuntu 16.04 x64.
 
 
--- Carlos Rodrigues
+--
+**Pixels Camp 2016** - Carlos Rodrigues
