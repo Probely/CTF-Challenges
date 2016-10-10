@@ -3,9 +3,7 @@
 #
 # Copyright (c) 2016, Bright Pixel
 #
-# For these tests to work, remember to start the service
-# from a clean slate. Otherwise, if a test fails, it may
-# leave stuff around and mess up the next testing round.
+# For these tests to work, remember to start the service.
 #
 
 
@@ -126,7 +124,7 @@ class TestApp(unittest.TestCase):
             self.assertTrue("Your answer is " in r.text)
 
 
-if __name__ == "__main__":
+gif __name__ == "__main__":
     unittest.main()
 
 
