@@ -53,4 +53,4 @@ Tested on Ubuntu 16.04 x64.
 
 
 --
-**Pixels Camp 2016** - Carlos Rodrigues
+**Pixels Camp 2016**

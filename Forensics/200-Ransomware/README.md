@@ -32,4 +32,4 @@ and MacOS X 10.11 (El Capitan).
 
 
 --
-**Pixels Camp 2016** - Carlos Rodrigues
+**Pixels Camp 2016**

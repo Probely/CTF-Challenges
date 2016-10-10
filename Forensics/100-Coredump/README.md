@@ -15,4 +15,4 @@ must be in the first 40 lines of strings output for this to be doable quickly.
 
 
 --
-**Pixels Camp 2016** - Carlos Rodrigues
+**Pixels Camp 2016**
