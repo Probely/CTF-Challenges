@@ -1,0 +1,18 @@
+.DS_Store
+.coverage
+*.tmp
+*.un~
+*.swp
+*.bak
+*.pyc
+*.pyo
+__pycache__
+.vagrant*
+
+# Distribution / packaging
+*.egg-info
+.cache/
+.eggs/
+build/
+dist/
+Gemfile.lock
