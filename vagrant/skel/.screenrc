@@ -1,0 +1,12 @@
+# Do not resize PuTTY on startup...
+termcap xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+terminfo xterm 'is=\E[r\E[m\E[2J\E[H\E[?7h\E[?1;4;6l'
+
+hardstatus alwayslastline
+hardstatus string '%{= kg}[ %{G}%H%{g} ][%{w}%= %?%-Lw%?%{r}(%{W}%n*%f %t%?(%u)%?%{r})%{w}%?%+Lw%?%? %=%{g}][ %{B}%Y-%m-%d %{W}%c %{g}]'
+
+defscrollback 1000
+startup_message off
+
+# Make SSH agent forwarding work (see ".bash_profile")...
+setenv SSH_AUTH_SOCK "$HOME/.ssh/ssh_auth_sock"
