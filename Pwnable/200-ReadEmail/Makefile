@@ -26,5 +26,8 @@ uninstall:
 	sudo rm -f /etc/systemd/system/p200.service
 	sudo systemctl daemon-reload
 
+tests:
+	. p200-venv/bin/activate && python tests/t_app.py
 
-.PHONY: all clean distclean install uninstall
+
+.PHONY: all tests clean distclean install uninstall
