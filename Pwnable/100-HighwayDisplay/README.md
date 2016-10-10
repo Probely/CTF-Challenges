@@ -1,5 +1,5 @@
-P100 - Exposed APIs
-===================
+P100 - Highway Display
+======================
 
 We found that some highway information displays have their APIs exposed
 on the wild Internet. These displays have a single endpoint `/text`

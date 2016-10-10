@@ -1,5 +1,5 @@
-F200 - Bad Seed
-===============
+F200 - Ransomware
+=================
 
 Our client has been the victim of a previously unknown ransomware, seemingly
 targeted specifically at him, as it only encrypted a few known critical files.

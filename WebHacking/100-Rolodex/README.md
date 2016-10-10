@@ -1,5 +1,5 @@
-W100 - Exposed APIs
-===================
+W100 - Rolodex
+==============
 
 Those guys at Nameless Corporation take everybody for fools, yet they believe
 nobody would ever target them. Nobody smart anyhow, from what I've seen so far.
