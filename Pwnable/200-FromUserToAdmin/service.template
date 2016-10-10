@@ -1,0 +1,14 @@
+[Unit]
+Description=Pixels Camp CTF P200 Challenge
+After=network.target
+
+[Service]
+User=__P200_USER__
+Group=__P200_GROUP__
+Type=simple
+WorkingDirectory=__P200_ROOT__
+ExecStart=__P200_ROOT__/p200-runserver.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
