@@ -1,0 +1,11 @@
+examples/remove.py
+examples/who.py
+examples/last.py
+examples/scanutmp.py
+examples/finger.py
+examples/remove-old.py
+examples/who-old.py
+examples/last-old.py
+examples/scanutmp-old.py
+examples/vms-finger-old.py
+examples/finger-old.py

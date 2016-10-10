@@ -1,0 +1,27 @@
+PYTHONVER?=2.7
+PYTHONDIR=$(DESTDIR)/usr/lib/python$(PYTHONVER)/site-packages/
+PYTHONINCLUDE=/usr/include/python$(PYTHONVER)/
+
+CC = gcc 
+CFLAGS = -g -Wall -I$(PYTHONINCLUDE) $(DEFINES)
+LDFLAGS = 
+
+all: utmpaccessmodule.so UTMPCONST.py
+
+
+utmpaccessmodule.o: utmpaccessmodule.c
+	$(CC) $(CFLAGS) -fpic -c utmpaccessmodule.c 
+
+utmpaccessmodule.so: utmpaccessmodule.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -fpic -shared utmpaccessmodule.o -o utmpaccessmodule.so
+
+UTMPCONST.py: constants.h makeconst.c makeconst.sh
+	./makeconst.sh $(CFLAGS)
+
+clean:
+	rm -f *~ *.o utmpaccessmodule.so *.pyc UTMPCONST.py makeconst
+
+install:
+	mkdir -p $(PYTHONDIR)
+	cp -f utmpaccessmodule.so utmp.py UTMPCONST.py $(PYTHONDIR)
+

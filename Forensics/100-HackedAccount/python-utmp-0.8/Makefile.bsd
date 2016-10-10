@@ -1,0 +1,6 @@
+
+
+#for bsd systems, i.e. FreeBSD, NetBSD, OpenBSD
+DEFINES = -D_HAVE_UT_HOST
+
+include Makefile.common

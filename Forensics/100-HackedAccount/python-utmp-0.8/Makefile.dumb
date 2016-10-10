@@ -1,0 +1,6 @@
+
+
+#for systems without suitable utmp
+DEFINES = 
+
+include Makefile.common

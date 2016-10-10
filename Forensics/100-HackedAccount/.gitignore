@@ -1,0 +1,8 @@
+python-utmp-*/UTMPCONST.py
+python-utmp-*/makeconst
+python-utmp-*/*.o
+python-utmp-*/*.so
+wtmp.new
+wtmp
+f100-venv
+addresses.txt

@@ -1,0 +1,134 @@
+python-utmp (0.8.1) unstable; urgency=low
+
+  * remove dh_python (closes: #561062), bump pyversions and
+    python-support build depencency version
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Sun, 03 Jan 2010 17:15:24 +0100
+
+python-utmp (0.8) unstable; urgency=low
+
+  * support for python3
+  * __repr__ for UtmpRecord and UtmpEntry
+  * incorporate Makefile changes by Pierre Habouzit
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Thu, 06 Aug 2009 17:49:55 +0200
+
+python-utmp (0.7.4-0.1) unstable; urgency=low
+
+  * Non-maintainer upload.
+  * Update package to the last python policy (Closes: 373363).
+  * Hack build system (make makefile aware of env using ?=).
+  * remove prerm, postinst.
+  * Avoid to install INSTALL file.
+
+ -- Pierre Habouzit <madcoder@debian.org>  Sat,  1 Jul 2006 20:40:48 +0200
+
+python-utmp (0.7.3) unstable; urgency=low
+
+  * added python to Build-Depends (closes: #259124)
+
+ -- Radovan Garabík <garabik@kassiopeia.juls.savba.sk>  Tue,  3 Aug 2004 07:52:58 +0200
+
+python-utmp (0.7.2) unstable; urgency=low
+
+  * NMU.
+  * Fix python dependency (using dh_python). Closes: #207317.
+  * Remove postinst/prerm files.
+
+ -- Matthias Klose <doko@debian.org>  Fri,  5 Sep 2003 22:51:05 +0200
+
+python-utmp (0.7.1) unstable; urgency=low
+
+  * NMU.
+  * Rebuild debian package with python2.3.
+  * clean: remove .so module
+  * control: add ${shlibs:Depends}
+
+ -- Matthias Klose <doko@debian.org>  Tue, 19 Aug 2003 07:51:00 +0200
+
+python-utmp (0.7) unstable; urgency=low
+
+  * Utmp entries are not tuples/dictionaries anymore, but objects
+    with attributes - as they should have been from the beginning
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Tue, 21 Jan 2003 15:39:45 +0100
+
+python-utmp (0.6.1) unstable; urgency=low
+
+  * rebuild debian package with python2.2 (closes: #160789)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Tue, 24 Sep 2002 14:45:03 +0200
+
+python-utmp (0.6) unstable; urgency=low
+
+  * added iterator to UtmpRecord
+  * debian package upgraded to work with python2.3 (closes: #160789)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Mon, 23 Sep 2002 13:27:56 +0200
+
+python-utmp (0.5.3) unstable; urgency=low
+
+  * fix dependencies (closes: #121703)
+  * fix postinst script
+  * fix description
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Sat,  1 Dec 2001 19:28:53 +0100
+
+python-utmp (0.5.2) unstable; urgency=low
+
+  * upgraded debian package to python2.1 (closes: #118253)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Tue, 16 Oct 2001 12:38:17 +0200
+
+python2-utmp (0.5.1) unstable; urgency=low
+
+  * moved Build-Depends where they belong (closes: #87270)
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Fri, 23 Feb 2001 20:39:10 +0100
+
+python2-utmp (0.5) unstable; urgency=low
+
+  * split makefiles by architecture
+  * upgraded to python2
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Mon, 19 Feb 2001 16:44:34 +0100
+
+python-utmp (0.4) unstable; urgency=low
+
+  * full read/write for all supported systems (including BSD)
+  * better support for system without ut_id
+  * support for SunOS utmpx
+  * ut_exit and ut_tv are now tuples
+  * ut_addr_v6 was not correctly returned, fixed
+  * added proper casting of C variables
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Sun, 15 Oct 2000 13:04:03 +0400
+
+python-utmp (0.3) unstable; urgency=low
+
+  * preliminary read-only support for BSD systems
+  * better support for systems without ut_type
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Sun,  1 Oct 2000 19:29:37 +0400
+
+python-utmp (0.2) unstable; urgency=low
+
+  * modules renamed
+  * UTMPCONST.py generated from utmp.h
+  * steps towards portability, now works on SunOS and HPUX,
+    hopefully on wider range of SYSTEM V machines.
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Fri, 22 Sep 2000 11:22:59 +0400
+
+python-utmp (0.1.1) unstable; urgency=low
+
+  * rebuilt with a new GPG key
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Fri,  1 Sep 2000 08:35:34 +0200
+
+python-utmp (0.1) unstable; urgency=low
+
+  * Initial Release.
+
+ -- Radovan Garabik <garabik@melkor.dnp.fmph.uniba.sk>  Wed, 22 Mar 2000 15:22:23 +0100
+

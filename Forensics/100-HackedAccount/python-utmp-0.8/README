@@ -1,0 +1,208 @@
+http://kassiopeia.juls.savba.sk/~garabik/software/python-utmp
+garabik @ kassiopeia.juls.savba.sk
+====================================================
+
+python-utmp consists of three modules, providing access to utmp records.
+It is quite difficult to access utmp record portably, because every UNIX
+has different structure of utmp files. Currently, python-utmp works on
+platforms which provide getutent, getutid, getutline,  pututline,
+setutent, endutent and utmpname functions (such as GNU systems
+(Linux and hurd) and System V unices) and on BSD systems using
+simple utmp structure.
+
+python-utmp is known to work on
+linux with glibc2.0, glibc2.1, glibc2.2, glibc2.3; SunOS 5.6; 
+HP-UX B.10.20; NetBSD 1.4.2; OpenBSD 2.9
+
+Python 3.X support
+------------------
+Starting from version 0.8, there is now a partial python3 support.
+In particular, ut_line, ut_id, ut_user, ut_host are strings, not bytes.
+If any of these fields contain non-ASCII characters, utmpaccess module
+will try to convert them into strings using the default system encoding
+(usually utf-8). If the field happens to contain invalid utf-8 sequences,
+this will raise an exception.
+However, this should not happen under normal circumstances – strings in
+utmp should be ASCII only, so this indicates a pathological situation, 
+probably a damage to the utmp file.
+Correct solution would be for utmpaccess to return bytes, and let
+utmp.py deal with it, by indicating that we want either bytes or strings.
+Some of the examples work with python3, converting others will be trivial.
+
+
+There was a big API change in version 0.7 – old interface has
+been kept for backward portability, but may be removed in the future.     
+
+Usually, system provides functions for accessing utmp, but on *BSD
+systems the only way (IMHO) is to read utmp file as consisting of
+C-structures. It is difficult to unite both worlds. 
+To make things worse, some OS'es (hint: SunOS :-)) use utmpx 
+in parallel to utmp, utmpx containing more information.
+
+python-utmp provides getutent() & comp. as an emulation layer if native
+system is lacking these functions, providing ideal glibc-like utmp
+structure, emulating fields present in this structure but missing at the
+specific platform.
+
+Missing member:    Default used instead:
+ut_type                 USER_PROCESS
+                        DEAD_PROCESS if ut_name and ut_host are empty
+                        EMPTY if ut_name, ut_host and ut_line are empty
+                        BOOT_TIME if ut_line is "~"
+ut_pid                  0
+ut_id                   ut_line
+ut_host                 ''
+ut_exit                 (0, 0)
+ut_tv.tv_sec            ut_time
+ut_tv.tv_usec           0
+ut_addr_v6              4*[0]
+ut_session              0
+
+
+CAVEAT: 
+If native platform misses ut_type, it distinguishes between user
+processes and pseudo-entries by ut_line. python-utmp tries to guess the
+appropriate ut_type in this case. It might not guess correctly.
+Moreover, I have seen some quirks with ut_type==USER_PROCESS  for date
+entries with linux. Therefore, date entries (with ut_line=="{" or
+ut_line=="|") are considered to be user processes for the time being.
+
+Similarly, if you write into utmp and your ut_type
+is not USER_PROCESS, corresponding ut_host and ut_user are cleared (=filled
+with zeros). Depending on your system, this may or may not be the
+right thing to do. It is correct at least with NetBSD.
+Reading from utmp and wtmp should be safe and bulletproof.
+
+Module "utmpaccess" provides low level access to utmp structure,
+in most cases you should use module "utmp" instead.
+
+utmpaccess provides following functions
+(see getutent(3) and utmp(5) for more information):
+
+ut_addr_v6 is a tuple of 4 integers,
+ut_exit is tuple of (e_termination, e_exit)
+ut_tv is tuple of (tv_sec, tv_usec)
+
+getutent():
+    returns None if there is an error (e.g. going past the end of utmp file)
+    otherwise returns tuple of:
+    (ut_type, ut_pid, ut_line, ut_id, ut_user, ut_host,
+     ut_exit, ut_session, ut_tv, ut_addr_v6)
+
+getutid(ut_type[, ut_id]):
+    returns None if there is an error (e.g. not found), otherwise returns
+    tuple of:
+    (ut_type, ut_pid, ut_line, ut_id, ut_user, ut_host,
+     ut_exit, ut_session, ut_tv, ut_addr_v6)
+
+getutline(ut_line):
+    returns None if there is an error (e.g. not found), otherwise returns
+    tuple of:
+    (ut_type, ut_pid, ut_line, ut_id, ut_user, ut_host,
+     ut_exit, ut_session, ut_tv, ut_addr_v6)
+
+pututline(ut_type, ut_pid, ut_line, ut_id, ut_user, ut_host,
+          ut_e_termination, ut_exit, ut_session,
+          ut_tv, ut_addr_v6):
+    returns None
+
+setutent():
+    returns None
+
+endutent()
+    returns None
+
+utmpname(fname):
+    returns None
+
+
+UTMPCONST.py provides convenient constants for work with utmpaccess.py,
+taken from system constants, or some sensibly made-up values if
+system does not provide them.
+(see UTMPCONST.py source)
+These constants are provided:
+
+EMPTY RUN_LVL BOOT_TIME NEW_TIME OLD_TIME INIT_PROCESS LOGIN_PROCESS
+USER_PROCESS DEAD_PROCESS ACCOUNTING UT_UNKNOWN
+
+UT_LINESIZE UT_NAMESIZE UT_HOSTSIZE UT_IDSIZE
+
+UTMP_FILE WTMP_FILE 
+
+UT_IDSIZE if the size of ut_id (usually 4).
+If your system does not have ut_id, ut_id is simulated by ut_line,
+and UT_IDSIZE==UT_LINESIZE
+
+
+Module "utmp" provides class UtmpEntry, correcponding to one
+entry in UTMP/WTMP file.
+UtmpEntry has following attributes (values after "=" demonstrate default values)
+ut_type = EMPTY
+ut_pid = 0
+ut_line = ''
+ut_id = ''
+ut_user = ''
+ut_host = ''
+ut_exit = (0, 0)
+ut_session = 0
+ut_tv = (0, 0)
+ut_addr_v6 = (0, 0, 0, 0)
+
+You can initialize new UtmpEntry via several different ways:
+  - passing a tuple to the constructor:
+
+    >>> tpl = (USER_PROCESS, 1234, 'tty5', 'id', 'root', 'localhost', (0, 0), 0, (0, 0), (0, 0, 0, 0))
+    >>> entry1 = UtmpEntry(tpl)
+
+  - using tuple as arguments:
+
+    >>> entry2 = UtmpEntry(USER_PROCESS, 1234, 'tty5', 'id', 'root', 'localhost', (0, 0), 0, (0, 0), (0, 0, 0, 0))
+
+  - using dictionary
+
+    >>> dic = { 'ut_type':USER_PROCESS, 'ut_pid':1234, 'ut_line':'tty5', 'ut_user':'root' }
+    >>> entry3 = UtmpEntry(dic)
+
+  - using named parameters:
+
+    >>> entry4 = UtmpEntry(ut_type=USER_PROCESS, ut_pid=1234, ut_line='tty5', ut_user='root')
+
+    Omitted parameters get the default values.
+
+  - using already existing instance of UtmpEntry
+
+    >>> entry5 = UtmpEntry(entry4)
+
+The preferred way is to get UtmpEntry from an existing UtmRecord, modify it
+according to your needs and write it back.
+
+UtmpEntry supports tuple- and dictionary-like interface, for compatibility with
+previous versions of python-utmp. So you can use entry5[0] or entry5['ut_type']
+instead of entry5.ut_type. This will be probably removed in the future.
+
+Module "utmp" also provides class UtmpRecord with following methods:
+
+getutent()
+getutid(ut_type[, ut_id]):
+getutline(ut_line)
+pututline(UtmpEntry)
+    for backward compatibility, you can use the same parameters as
+    when creating UtmpEntry instance.
+setutent()
+endutent()
+
+old *_dict() methods are still kept for backward compatibility; they may
+be removed in the future.
+
+as of version 0.6, it also provides an iterator which enables
+you to write loops like this (it requires python>2.2):
+
+u = utmp.UtmpRecord()
+for i in u:
+   # i is an UtmpEntry instance, as if returned by u.getutent()
+   <do something with i>
+
+You pass filename for utmpname() when creating instance of the class, 
+e.g. a=Utmp.UtmpRecord("/var/log/wtmp")
+
+

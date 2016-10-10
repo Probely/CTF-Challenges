@@ -1,0 +1,9 @@
+edit Makefile.common, especially the path you your python modules and
+python include file.
+Select suitable Makefile.target, where target is one of dumb, bsd, glibc, 
+hpux, sunos, check DEFINES for your system.
+
+type 
+$ make -f Makefile.target
+# make install
+
