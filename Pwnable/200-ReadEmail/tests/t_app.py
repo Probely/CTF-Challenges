@@ -20,15 +20,18 @@ import sys
 
 from hashlib import sha1
 
+# Ensure the application source is reachable...
+sys.path.insert(0, os.path.join(os.path.split(__file__)[0], "../app"))
+
+# Allow importing application modules just for their constants...
+from django.conf import settings
+settings.configure()
+
+from views import ATTACKER_USERNAME, ATTACKER_PASSWORD, \
+                  VICTIM_USERNAME, SESSION_ID_COOKIE_NAME, EMAILS
+
 
 APP_URL = "http://127.0.0.1:8753"
-CSRF_TOKEN = "U3g7HfBKsra6wLwf1wE8XZdtnBnsmQrJ"
-
-
-ATTACKER_USERNAME = "pjsmith"
-ATTACKER_PASSWORD = "freire7f1"
-
-VICTIM_USERNAME = "bruce"
 
 
 def string_xor(s1, s2):
@@ -58,23 +61,24 @@ def get_victim_session_id(victim, attacker_session_id):
 
 
 class TestApp(unittest.TestCase):
-    def setUp(cls):
-        pass
+    def setUp(self):
+        r = requests.get("%s/" % APP_URL)
+        self.csrf_token = r.cookies["csrftoken"]
 
 
     def test_trigger_debug(self):
         """Ensure the fake debug page returns the necessary challenge hints."""
 
         r = requests.post("%s/login" % APP_URL,
-                          cookies={"csrftoken": CSRF_TOKEN},
-                          data={"csrfmiddlewaretoken": CSRF_TOKEN,
+                          cookies={"csrftoken": self.csrf_token},
+                          data={"csrfmiddlewaretoken": self.csrf_token,
                                 "username": "ã",  # ...any special character.
                                 "password": "",
                                 "submit": "Submit"})
 
         self.assertEqual(r.status_code, 200)
         self.assertTrue("stream_cipher" in r.text)
-        self.assertTrue("/home/bruce/" in r.text)
+        self.assertTrue("/home/%s/" % VICTIM_USERNAME in r.text)
 
 
     def test_attacker_login(self):
@@ -82,20 +86,20 @@ class TestApp(unittest.TestCase):
 
         with requests.Session() as s:
             r = s.post("%s/login" % APP_URL,
-                       cookies={"csrftoken": CSRF_TOKEN},
-                       data={"csrfmiddlewaretoken": CSRF_TOKEN,
+                       cookies={"csrftoken": self.csrf_token},
+                       data={"csrfmiddlewaretoken": self.csrf_token,
                              "username": ATTACKER_USERNAME,
                              "password": ATTACKER_PASSWORD,
                              "submit": "Submit"})
 
             # The list of emails can be seen...
             self.assertEqual(r.status_code, 200)
-            self.assertTrue("Good News Paul!" in r.text)
+            self.assertTrue(EMAILS[ATTACKER_USERNAME][0][0] in r.text)  # ...subject.
 
             # There's an email from the system administrator...
             r = s.get("%s/viewmail/1/" % APP_URL)
             self.assertEqual(r.status_code, 200)
-            self.assertTrue("Bruce Walters" in r.text)
+            self.assertTrue(VICTIM_USERNAME in r.text.lower())
 
 
     def test_get_flag(self):
@@ -103,18 +107,18 @@ class TestApp(unittest.TestCase):
 
         with requests.Session() as s:
             r = s.post("%s/login" % APP_URL,
-                       cookies={"csrftoken": CSRF_TOKEN},
-                       data={"csrfmiddlewaretoken": CSRF_TOKEN,
+                       cookies={"csrftoken": self.csrf_token},
+                       data={"csrfmiddlewaretoken": self.csrf_token,
                              "username": ATTACKER_USERNAME,
                              "password": ATTACKER_PASSWORD,
                              "submit": "Submit"})
 
             # The list of *attacker* emails can be seen...
             self.assertEqual(r.status_code, 200)
-            self.assertTrue("Good News Paul!" in r.text)
+            self.assertTrue(EMAILS[ATTACKER_USERNAME][0][0] in r.text)  # ...subject.
 
             # Get the victim's session...
-            sid = next(c for c in s.cookies if c.name == "sessionid")
+            sid = next(c for c in s.cookies if c.name == SESSION_ID_COOKIE_NAME)
             victim_sid = get_victim_session_id(VICTIM_USERNAME, sid.value)
             s.cookies.set(sid.name, victim_sid, domain=sid.domain)
 
@@ -124,7 +128,7 @@ class TestApp(unittest.TestCase):
             self.assertTrue("Your answer is " in r.text)
 
 
-gif __name__ == "__main__":
+if __name__ == "__main__":
     unittest.main()
 
 
