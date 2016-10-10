@@ -1,11 +1,12 @@
 Solution
-------
+========
 
 This challenge is a pratical example showing that subtly broken cryptography can result in "catastrophic" failure. In this particular example, transforming a 'user' token into an 'admin' token.
 
 The first step is to find out that there is a ```.git``` folder on the root of the service. Use ```DVCS-Pillage``` to extract the repository.
 
 This git repository will have the service source code:
+
 ```bash
 app.py
 authentication.py
@@ -22,7 +23,7 @@ The ```authentication.py``` file documents the basic token structure.
     # 'user\x00\x00\x00\x00\x00\x00\x00\x00W\xea\xae\xd9'
     # Example for username "admin":
     # 'admin\x00\x00\x00\x00\x00\x00\x00W\xea\xae\xd9'
-    
+
     (...)
 
     ciphertext = BOX.encrypt(plaintext)
@@ -61,6 +62,7 @@ We know that the resulting plaintext will be something like:
 Where ```[TTTT]``` are the four bytes of the "time to live" field. We do not need to know this value (even though it is guessable).
 
 We wish for it to become:
+
 ```python
 'admin\x00\x00\x00\x00\x00\x00\x00[TTTT]'
 ```
@@ -77,10 +79,10 @@ iv = token[:16]
 
 # We only wish to change the beggining of the token (user->admin). Focus on that:
 
-# Remove the original iv bytes after decryption 
+# Remove the original iv bytes after decryption
 new_iv = iv[:5]
 # Remove the original 'user' value
-new_iv = xor(new_iv, 'user') 
+new_iv = xor(new_iv, 'user')
 # Add the 'admin' value
 new_iv = xor(new_iv, 'admin')
 # Build the final iv. The first 5 bytes are manipulated to make sure that the token
