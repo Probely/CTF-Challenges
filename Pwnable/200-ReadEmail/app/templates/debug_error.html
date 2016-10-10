@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<!-- saved from url=(0027)http://127.0.0.1:8000/login -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="robots" content="NONE,NOARCHIVE">
+  <title>AssertionError at /login</title>
+  <style type="text/css">
+    html * { padding:0; margin:0; }
+    body * { padding:10px 20px; }
+    body * * { padding:0; }
+    body { font:small sans-serif; }
+    body>div { border-bottom:1px solid #ddd; }
+    h1 { font-weight:normal; }
+    h2 { margin-bottom:.8em; }
+    h2 span { font-size:80%; color:#666; font-weight:normal; }
+    h3 { margin:1em 0 .5em 0; }
+    h4 { margin:0 0 .5em 0; font-weight: normal; }
+    code, pre { font-size: 100%; white-space: pre-wrap; }
+    table { border:1px solid #ccc; border-collapse: collapse; width:100%; background:white; }
+    tbody td, tbody th { vertical-align:top; padding:2px 3px; }
+    thead th { padding:1px 6px 1px 3px; background:#fefefe; text-align:left; font-weight:normal; font-size:11px; border:1px solid #ddd; }
+    tbody th { width:12em; text-align:right; color:#666; padding-right:.5em; }
+    table.vars { margin:5px 0 2px 40px; }
+    table.vars td, table.req td { font-family:monospace; }
+    table td.code { width:100%; }
+    table td.code pre { overflow:hidden; }
+    table.source th { color:#666; }
+    table.source td { font-family:monospace; white-space:pre; border-bottom:1px solid #eee; }
+    ul.traceback { list-style-type:none; color: #222; }
+    ul.traceback li.frame { padding-bottom:1em; color:#666; }
+    ul.traceback li.user { background-color:#e0e0e0; color:#000 }
+    div.context { padding:10px 0; overflow:hidden; }
+    div.context ol { padding-left:30px; margin:0 10px; list-style-position: inside; }
+    div.context ol li { font-family:monospace; white-space:pre; color:#777; cursor:pointer; }
+    div.context ol li pre { display:inline; }
+    div.context ol.context-line li { color:#505050; background-color:#dfdfdf; }
+    div.context ol.context-line li span { position:absolute; right:32px; }
+    .user div.context ol.context-line li { background-color:#bbb; color:#000; }
+    .user div.context ol li { color:#666; }
+    div.commands { margin-left: 40px; }
+    div.commands a { color:#555; text-decoration:none; }
+    .user div.commands a { color: black; }
+    #summary { background: #ffc; }
+    #summary h2 { font-weight: normal; color: #666; }
+    #explanation { background:#eee; }
+    #template, #template-not-exist { background:#f6f6f6; }
+    #template-not-exist ul { margin: 0 0 0 20px; }
+    #unicode-hint { background:#eee; }
+    #traceback { background:#eee; }
+    #requestinfo { background:#f6f6f6; padding-left:120px; }
+    #summary table { border:none; background:transparent; }
+    #requestinfo h2, #requestinfo h3 { position:relative; margin-left:-100px; }
+    #requestinfo h3 { margin-bottom:-1em; }
+    .error { background: #ffc; }
+    .specific { color:#cc3300; font-weight:bold; }
+    h2 span.commands { font-size:.7em;}
+    span.commands a:link {color:#5E5694;}
+    pre.exception_value { font-family: sans-serif; color: #666; font-size: 1.5em; margin: 10px 0 10px 0; }
+  </style>
+
+  <script type="text/javascript">
+  //<!--
+    function getElementsByClassName(oElm, strTagName, strClassName){
+        // Written by Jonathan Snook, http://www.snook.ca/jon; Add-ons by Robert Nyman, http://www.robertnyman.com
+        var arrElements = (strTagName == "*" && document.all)? document.all :
+        oElm.getElementsByTagName(strTagName);
+        var arrReturnElements = new Array();
+        strClassName = strClassName.replace(/\-/g, "\-");
+        var oRegExp = new RegExp("(^|\s)" + strClassName + "(\s|$)");
+        var oElement;
+        for(var i=0; i<arrElements.length; i++){
+            oElement = arrElements[i];
+            if(oRegExp.test(oElement.className)){
+                arrReturnElements.push(oElement);
+            }
+        }
+        return (arrReturnElements)
+    }
+    function hideAll(elems) {
+      for (var e = 0; e < elems.length; e++) {
+        elems[e].style.display = 'none';
+      }
+    }
+    window.onload = function() {
+      hideAll(getElementsByClassName(document, 'table', 'vars'));
+      hideAll(getElementsByClassName(document, 'ol', 'pre-context'));
+      hideAll(getElementsByClassName(document, 'ol', 'post-context'));
+      hideAll(getElementsByClassName(document, 'div', 'pastebin'));
+    }
+    function toggle() {
+      for (var i = 0; i < arguments.length; i++) {
+        var e = document.getElementById(arguments[i]);
+        if (e) {
+          e.style.display = e.style.display == 'none' ? 'block' : 'none';
+        }
+      }
+      return false;
+    }
+    function varToggle(link, id) {
+      toggle('v' + id);
+      var s = link.getElementsByTagName('span')[0];
+      var uarr = String.fromCharCode(0x25b6);
+      var darr = String.fromCharCode(0x25bc);
+      s.innerHTML = s.innerHTML == uarr ? darr : uarr;
+      return false;
+    }
+    function switchPastebinFriendly(link) {
+      s1 = "Switch to copy-and-paste view";
+      s2 = "Switch back to interactive view";
+      link.innerHTML = link.innerHTML == s1 ? s2 : s1;
+      toggle('browserTraceback', 'pastebinTraceback');
+      return false;
+    }
+    //-->
+  </script>
+
+<style type="text/css"></style></head>
+<body>
+<div id="summary">
+  <h1>AssertionError at /login</h1>
+  <pre class="exception_value">No exception message supplied</pre>
+  <table class="meta">
+
+    <tbody><tr>
+      <th>Request Method:</th>
+      <td>POST</td>
+    </tr>
+    <tr>
+      <th>Request URL:</th>
+      <td>http://127.0.0.1:8000/login</td>
+    </tr>
+
+    <tr>
+      <th>Django Version:</th>
+      <td>1.10.1</td>
+    </tr>
+
+    <tr>
+      <th>Exception Type:</th>
+      <td>AssertionError</td>
+    </tr>
+
+
+
+    <tr>
+      <th>Exception Location:</th>
+      <td>/home/bruce/pixelscamp/ctf/views.py in login, line 46</td>
+    </tr>
+
+    <tr>
+      <th>Python Executable:</th>
+      <td>/usr/bin/python</td>
+    </tr>
+    <tr>
+      <th>Python Version:</th>
+      <td>2.7.10</td>
+    </tr>
+    <tr>
+      <th>Server time:</th>
+      <td>Mon, 5 Sep 2016 16:37:04 +0000</td>
+    </tr>
+  </tbody></table>
+</div>
+
+
+
+
+<div id="traceback">
+  <h2>Traceback</h2>
+
+  <div id="browserTraceback">
+    <ul class="traceback">
+
+        <li class="frame django">
+          <code>/home/foobar/.virtualenvs/bla/local/lib/python2.7/site-packages/django/core/handlers/base.py</code> in <code>get_response</code>
+
+
+            <div class="context" id="c178575236">
+
+                <ol start="107" class="pre-context" id="pre178575236" style="display: none;"><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    response = middleware_method(request, callback, callback_args, callback_kwargs)</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    if response:</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                        break</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre></pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>            if response is None:</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                wrapped_callback = self.make_view_atomic(callback)</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                try:</pre></li></ol>
+
+              <ol start="114" class="context-line"><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    response = wrapped_callback(request, *callback_args, **callback_kwargs)</pre> <span>...</span></li></ol>
+
+                <ol start="115" class="post-context" id="post178575236" style="display: none;"><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                except Exception as e:</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    # If the view raised an exception, run it through exception</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    # middleware, and if the exception middleware returns a</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    # response, use that. Otherwise, reraise the exception.</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                    for middleware_method in self._exception_middleware:</pre></li><li onclick="toggle(&#39;pre178575236&#39;, &#39;post178575236&#39;)"><pre>                        response = middleware_method(request, e)</pre></li></ol>
+
+            </div>
+
+
+
+
+        </li>
+
+        <li class="frame user">
+          <code>/home/foobar/p200/problem/problem/views.py</code> in <code>login</code>
+
+
+            <div class="context" id="c178575116">
+
+                <ol start="37" class="pre-context" id="pre178575116" style="display: block;">
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>def generate_session_token(username):</pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>    user_hash = sha1(username).digest()</pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>    return stream_cipher(user_hash).encode('hex')</pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre></pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre></pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>def login(request):</pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>    username = request.POST.get('username', '')</pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>    password = request.POST.get('password', '')</pre></li>
+                    <li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>    for c in username + password:</pre></li>
+                </ol>
+
+              <ol start="46" class="context-line"><li onclick="toggle(&#39;pre178575116&#39;, &#39;post178575116&#39;)"><pre>        assert c in 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'</pre> <span>...</span></li></ol>
+
+
+            </div>
+
+
+
+
+        </li>
+
+    </ul>
+  </div>
+
+  <form action="http://dpaste.com/" name="pasteform" id="pasteform" method="post">
+
+  <div id="pastebinTraceback" class="pastebin" style="display: none;">
+    <input type="hidden" name="language" value="PythonConsole">
+    <input type="hidden" name="title" value="AssertionError at /login">
+    <input type="hidden" name="source" value="Django Dpaste Agent">
+    <input type="hidden" name="poster" value="Django">
+  <br><br>
+  <input type="submit" value="Share this traceback on a public Web site">
+  </div>
+</form>
+</div>
+
+
+
+
+  <div id="explanation">
+    <p>
+      You're seeing this error because you have <code>DEBUG = True</code> in your
+      Django settings file. Change that to <code>False</code>, and Django will
+      display a standard 500 page.
+    </p>
+  </div>

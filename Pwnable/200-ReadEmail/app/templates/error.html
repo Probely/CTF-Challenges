@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+{% block content %}
+<h2 class='error'>{{ error_message }}</h2>
+{% if referer %}
+    <div class="back_button">
+        <form action="{{ referer }}" method="get"><input type="submit" value="Back" ></form>
+    </div>
+{% else %}
+    <div class="back_button">
+        <form action="{% url 'app.views.index' %}" method="get"><input type="submit" value="Back" ></form>
+    </div>
+{% endif %}
+{% endblock %}

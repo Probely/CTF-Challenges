@@ -1,0 +1,40 @@
+{% load static from staticfiles %}
+{% load url from future %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Shay D'Mail</title>
+        <meta http-equiv="Content-Language" content="English" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" media="screen" />
+    </head>
+    <body>
+        <div id="wrap">
+            <div id="header">
+                <div id="title"><h1><a href="{% url 'app.views.index' %}">Shay D'Mail</a></h1></div>
+                <h2>Not shady!</h2>
+            </div>
+
+            <div id="content">
+
+                {% block content %}
+                {% endblock %}
+
+            </div>
+
+            <div id="orange_bar">
+                <ul>
+                    {% if username %}
+                        <li class='right'>
+                            <a href="{% url 'app.views.logout' %}">[logout {{ username }}]</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+
+            <div id="warning">
+            We are having trouble with our IMAP servers. Stay tuned, we're working on it.
+            </div>
+        </div>
+    </body>
+</html>

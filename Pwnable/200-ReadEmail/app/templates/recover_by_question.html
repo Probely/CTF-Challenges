@@ -1,0 +1,36 @@
+{% extends "template.html" %}
+{% block content %}
+    <h2 class="heading">Recover password by answering your secret question</h2>
+    <br />
+
+    {% if new_password %}
+    <p>Your password has been reset and it is: {{ new_password }}.</p>
+    <div class="back_button">
+        <form action="{% url 'app.views.index' %}" method="get"><input type="submit" value="Back" ></form>
+    </div>
+    {% elif victim_question %}
+    <form name="login" action="{% url 'app.views.recover_by_question' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>{{ victim_question }}:</td><td> <input type="text" name="answer" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" /></td>
+            </tr>
+        </table>
+    </form>
+    {% else %}
+    <form name="login" action="{% url 'app.views.recover_by_question' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td>What is your username:</td><td> <input type="text" name="username" /></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="submit" /></td>
+            </tr>
+        </table>
+    </form>
+    {% endif %}
+{% endblock %}

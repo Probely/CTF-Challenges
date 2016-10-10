@@ -1,0 +1,131 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #ddd;
+    font-family: Helvetica, Verdana, Tahoma, Arial, sans-serif;
+    font-size: 12px;
+    padding: 0;
+    margin: 0;
+    color: #333;
+    line-height: 17px;
+}
+
+img { border: none; }
+a { color: #0090DF; text-decoration: none; }
+a:hover { color : #000 }
+
+.heading { color: #222; font-size: 16px; text-decoration: none; }
+
+input {
+    margin: 5px;
+    padding: 2px;
+}
+
+.label {
+    text-align: right;
+}
+
+input[type="submit"] {
+    margin: 10px;
+}
+
+#logged_users table {
+    border-collapse:collapse;
+}
+#logged_users td, th {
+    border: 1px solid black;
+    padding: 5px 5px 5px 5px;
+}
+#wrap {
+    margin: 20px auto;
+    width: 760px;
+}
+
+#orange_bar {
+    background: #eee;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+}
+#orange_bar>ul {
+    text-align:right;
+    padding:0;
+    color: white;
+    display:table;
+    width:100%;
+}
+#orange_bar>ul li {
+    display:inline;
+    white-space:nowrap;
+    display:table-cell;
+}
+#orange_bar>ul li.left{
+    float:none;
+    text-align:left;
+    padding-left: 10px;
+}
+#orange_bar>ul li.right{
+    text-align:right;
+    padding-right: 20px;
+}
+
+#title {
+    padding-bottom: 10px;
+}
+#header {
+    background: #eee;
+    height: 90px;
+    margin-top: 100px;
+}
+#header h1 {
+    color : #01A7EE;
+    font-size: 29px;
+    letter-spacing: -2px;
+    padding: 30px 0 0 30px;
+    font-weight: 100;
+}
+#header h1 a { text-decoration: none; color : #01A7EE; }
+#header h1 a:hover { color : #333; }
+#header h2 {
+    color : #777;
+    font-size: 15px;
+    padding: 0 0 0 30px;
+    font-weight: 100;
+}
+
+#welcome {
+    padding-left: 10px;
+}
+
+#email {
+    text-align: right
+}
+
+#content {
+    background: #fff;
+    padding: 40px 30px;
+}
+
+#email_list {
+    margin-left: 20px;
+}
+
+.error {
+    background: #f42424;
+    color: #fff;
+    padding: 20px;
+    margin: 40px;
+    font-size: 16px;
+    text-align: center;
+}
+
+#warning{
+    background: #5454f8;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+}

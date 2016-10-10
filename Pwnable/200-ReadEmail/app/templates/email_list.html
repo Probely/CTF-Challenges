@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+{% block content %}
+    <h2 class="heading">Inbox</h2>
+
+    <br />
+    <div id="email_list">
+        <ul>
+            {% for subject in subjects %}
+                <li><a href="{% url 'app.views.viewmail' forloop.counter %}">{{ subject }}</a></li>
+            {% empty %}
+                <p>No email.</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

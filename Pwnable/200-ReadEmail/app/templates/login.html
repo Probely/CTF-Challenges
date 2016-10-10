@@ -1,0 +1,18 @@
+{% extends "template.html" %}
+{% block content %}
+    <h2 class="heading">Webmail Access</h2>
+    <br />
+
+    <form name="login" action="{% url 'app.views.login' %}" method="post">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td class="label">Email address:</td><td> <input type="text" name="username" />@shaydmail.org</td>
+            </tr>
+            <tr>
+                <td class="label">Password:</td><td> <input type="password" name="password" /></td>
+            </tr>
+        </table>
+        <p><input type="submit" name="submit" /></p>
+    </form>
+{% endblock %}
