@@ -14,6 +14,8 @@ Disclaimer
 
 This **isn't** production code. All of these challenges have **vulnerabilities** built into them **on purpose**. As they're one-off programs, they may also contain other random issues we didn't account for (if a team happens to discover one of these, it becomes part of the competition too).
 
+Also, they're mostly using development-grade services and we recommend you run them behind a reverse proxy such as [nginx](https://nginx.org/). Check the `nginx` directory in the repository for configuration examples.
+
 Contributing
 ============
 
