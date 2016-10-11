@@ -5,6 +5,8 @@ In this repository you can find challenges from previous _capture-the-flag_ secu
 
 Feel free to use these in your own competitions either _as-is_ or as starting points for your own custom challenges, perhaps together with our [competition dashboard](https://github.com/Probely/CTF-Game).
 
+Challenges are organized by category. Each challenge has a level of difficulty, indicated in each challenge folder name, and range from 100 to 400, where 100 is the easiest and 400 the hardest.
+
 Each challenge has its own `README.md` file with the challenge context and installation instructions. The solution is in a separate `SOLUTION.md` file to avoid spoilers.
 
 There is also a `Vagrantfile` available in the repository's root. To have an environment similar to the one where we test the challenges, install [Vagrant](https://www.vagrantup.com/) with [VirtualBox](https://www.virtualbox.org/) and run `vagrant up`. This sets up a base environment, so make sure to check each challenges' `README.md` for challenge-specific dependencies.
