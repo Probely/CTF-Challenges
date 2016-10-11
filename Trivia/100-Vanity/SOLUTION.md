@@ -1,0 +1,9 @@
+Solution
+========
+
+Imagetragick
+
+Flag
+----
+
+`Imagetragick`
