@@ -8,9 +8,8 @@ What's the vanity name of the vulnerability for which the fix includes the follo
  +      q=value+strlen(value);
  +      for (p+=strspn(p,whitelist); p != q; p+=strspn(p,whitelist))
  +        *p=\'_\';
- +      break;</pre></p>';
+ +      break;
  ```
-
 
 
 --
