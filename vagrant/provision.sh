@@ -73,8 +73,11 @@ echo "provision.sh: Running project-specific actions..."
 # Install extra packages needed for the project...
 sudo DEBIAN_FRONTEND=noninteractive apt-get -qq -y install \
     git build-essential \
-    python-dev virtualenv
+    python-dev virtualenv \
+    nginx
 
+sudo systemctl -q enable nginx 2>/dev/null
+sudo systemctl start nginx
 
 # Install Docker for challenges that require sandboxing...
 sudo apt-key adv --keyserver "hkp://p80.pool.sks-keyservers.net:80" --recv-keys "58118E89F3A912897C070ADBF76221572C52609D"
