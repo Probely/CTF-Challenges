@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block main %}
+    <br />
+
+    <!-- About Section -->
+    <section class="" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2>Operations</h2>
+                    <hr class="star-primary">
+                </div>
+            </div>
+            <div class="row">
+{% if session.balance > constant('TARGET_BALANCE') %}
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p class="bg-success">
+                        You got your first million. As a bonus we have added some extra to your balance.
+						Your balance is now <i class="fa fa-btc" aria-hidden="true"></i>{{ session.balance }}<br />
+                    </p>
+                </div>
+{% else %}
+                <div class="col-lg-8 col-lg-offset-2">
+                    <p>Your balance is <i class="fa fa-btc" aria-hidden="true"></i>{{ session.balance }}</p>
+                </div>
+{% endif %}
+                <div class="col-lg-8 col-lg-offset-2">
+
+                    <form action="operations.php" method="post" name="sentMessage" id="transferForm">
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Destination account</label>
+                                <input type="email" name="account" value="{% if username is not empty %}{{ username }}{% endif %}" type="text" class="form-control" placeholder="Destination account" id="destaccount" required data-validation-required-message="Please enter the destination account.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="form-group col-xs-12 floating-label-form-group controls">
+                                <label>Amount</label>
+                                <input type="number" name="amount" class="form-control" placeholder="Amount" required data-validation-required-message="Please the amount.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                        <br>
+                        <div id="success"></div>
+                        <div class="row">
+                            <div class="form-group col-xs-12">
+                                <button type="submit" class="btn btn-success btn-lg">Transfer</button>
+                            </div>
+                        </div>
+                        <div class="row control-group">
+                            <div class="col-xs-12">
+                                <p id="content" class="info-block text-warning"></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+    $( "#transferForm" ).submit(function( event ) {
+      event.preventDefault();
+
+      var $form = $(this),
+        amount = $form.find( "input[name='amount']" ).val(),
+        account = $form.find( "input[name='account']" ).val(),
+        url = $form.attr("action");
+        var xml="<?xml version='1.0' encoding='ISO-8859-1'?><transfer><to>"+account+"</to><from>{{ session.username }}</from><amount>"+amount+"</amount><id>{{ session_id }}</id></transfer>";
+        var parser = new DOMParser();
+        var xmlDoc = parser.parseFromString(xml, "text/xml");
+        var posting = $.post( url, { xml: xml } );
+
+      // Put the results in a div
+      posting.done(function( data ) {
+          $("#content").text(data);
+      });
+    });
+    </script>
+
+
+{% endblock %}
