@@ -1,7 +1,7 @@
 Security CTF Challenges
 =======================
 
-In this repository you can find challenges from previous _capture-the-flag_ security competitions organized by the [Probe.ly](https://probe.ly) team. For now we're only adding challenges that were both opened and successfully solved by some team during a public event.
+In this repository you can find challenges from previous _capture-the-flag_ security competitions organized by the [Probe.ly](https://probely.com) team. For now we're only adding challenges that were both opened and successfully solved by some team during a public event.
 
 Feel free to use these in your own competitions either _as-is_ or as starting points for your own custom challenges, perhaps together with our [competition dashboard](https://github.com/Probely/CTF-Game).
 
@@ -24,4 +24,4 @@ Contributing
 We encourage you to fork this repository and add your own challenges. If you'd be kind enough to submit a pull request, we would surely appreciate it.
 
 --
-team@probe.ly
+team@probely.com
