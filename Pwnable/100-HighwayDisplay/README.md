@@ -62,4 +62,4 @@ Tested on Ubuntu 16.04 x64.
 
 
 --
-**Pixels Camp 2016**
+**Pixels Camp 2016 CTF and Pixels Camp 2017 Qualifiers**
