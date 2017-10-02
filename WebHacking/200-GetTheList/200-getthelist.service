@@ -1,0 +1,14 @@
+[Unit]
+Description=Pixels Camp CTF W200 Challenge
+After=network.target
+
+[Service]
+User=tmendo
+Group=staff
+Type=simple
+WorkingDirectory=/Users/tmendo/repos/brpx/CTF-Challenges/WebHacking/200-GetTheList
+ExecStart=/Users/tmendo/repos/brpx/CTF-Challenges/WebHacking/200-GetTheList/runserver.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
