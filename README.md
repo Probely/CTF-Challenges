@@ -23,5 +23,9 @@ Contributing
 
 We encourage you to fork this repository and add your own challenges. If you'd be kind enough to submit a pull request, we would surely appreciate it.
 
+
+Kudos to @serranos, @tomahock and @carlosefr for helping developing some of these challenges!
+
+
 --
 team@probely.com
