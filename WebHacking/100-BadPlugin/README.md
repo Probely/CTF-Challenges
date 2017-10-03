@@ -26,7 +26,7 @@ If you want to customize the Wordpress, or something else, the `admin` user cred
 Known issues
 ----------
 
-There were issues with https links in this challenge, when it was configure to http only so we recommend that you test it thoroughly. You may need to replace all the https links http, or the other way around (to avoid browsers mixed content resource blocking).
+There were issues with https links in this challenge, when it was configure to http only so we recommend that you test it thoroughly. You may need to replace all the https links with http ones, or the other way around (to avoid browsers mixed content resource blocking).
 
 
 --
