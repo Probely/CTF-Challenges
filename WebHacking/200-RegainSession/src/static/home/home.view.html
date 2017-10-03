@@ -1,0 +1,10 @@
+﻿<h1>Hi {{vm.user.fullname}}!</h1>
+<p>You're logged in!!</p>
+<h3>Latest metrics:</h3>
+<ul>
+    <li ng-repeat="metric in vm.metrics">
+        {{metric.name}} ({{metric.value}})
+    </li>
+</ul>
+<p>&nbsp;</p>
+<p><a href="#!/login" class="btn btn-primary">Logout</a></p>

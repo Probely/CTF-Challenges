@@ -1,0 +1,9 @@
+{
+  "name": "W200",
+  "version": "1.0.0",
+  "description": "W200",
+  "main": "app.js",
+  "dependencies": {
+    "angular": "^1.6"
+  }
+}
