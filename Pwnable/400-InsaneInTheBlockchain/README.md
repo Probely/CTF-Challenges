@@ -33,10 +33,10 @@ Two possible approaches
   * Reverse engineer the binary and find out the value of k
     * Fetch the [geth source code](https://github.com/ethereum/go-ethereum/wiki/geth)
     * Find out which function generates k and work from there (using dynamic or static RE)
-    * Google "ecdsa k reuse". Use [this tool](https://github.com/tintinweb/ecdsa-private-key-recovery) and plug in known k (no need for two signatures).
+    * Google "ecdsa k reuse". Use [this tool](https://github.com/tintinweb/ecdsa-private-key-recovery) and plug in known k (no need for two signatures)
       
   * Analytical method
     * Perform two signatures with some key
     * Google "edsa k reuse". Use [this tool](https://github.com/tintinweb/ecdsa-private-key-recovery)
-    * Alternatively, having a known key allows us to extract `k` directly. Having `k` allows us to extract the private key from only transaction only (check out the [solution file](../blob/master/Pwnable/P400-InsaneInTheBlockChain/solution/solution.py)
+    * Alternatively, having a known key allows us to extract `k` directly. Having `k` allows us to extract the private key from only transaction only. Check out the [solution file](../blob/master/Pwnable/P400-InsaneInTheBlockChain/solution/solution.py)
 
