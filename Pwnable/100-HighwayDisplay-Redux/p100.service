@@ -1,0 +1,15 @@
+[Unit]
+Description=Pixels Camp CTF P100 Challenge
+After=network.target
+Requires=docker.service
+After=docker.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/docker run --name p100 -p 127.0.0.1:32100:8080 --mount type=tmpfs,destination=/tmp,tmpfs-size=107374182400 --read-only --rm p100
+KillSignal=SIGINT
+TimeoutStopSec=5
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
