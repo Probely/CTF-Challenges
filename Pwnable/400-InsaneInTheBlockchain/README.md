@@ -5,7 +5,7 @@
 Check out this transaction, on the Ethereum blockchain:
 https://etherscan.io/address/0x55dfcea405a1c9b7336cd2286c2c3040f9b13e7d
 
-We know [this binary](../blob/master/Pwnable/P400-InsaneInTheBlockChain/bin/geth) was used to sign it.
+We know [this binary](Pwnable/P400-InsaneInTheBlockChain/bin/geth) was used to sign it.
 
 Extract the private key used to sign this transaction.
 
@@ -38,5 +38,5 @@ Two possible approaches
   * Analytical method
     * Perform two signatures with some key
     * Google "edsa k reuse". Use [this tool](https://github.com/tintinweb/ecdsa-private-key-recovery)
-    * Alternatively, having a known key allows us to extract `k` directly. Having `k` allows us to extract the private key from only transaction only. Check out the [solution file](../blob/master/Pwnable/P400-InsaneInTheBlockChain/solution/solution.py)
+    * Alternatively, having a known key allows us to extract `k` directly. Having `k` allows us to extract the private key from only transaction only. Check out the [solution file](Pwnable/P400-InsaneInTheBlockChain/solution/solution.py)
 
