@@ -1,4 +1,4 @@
-bottle==0.12.13
+bottle==0.12.20
 bottle-redis==0.2.3
 gevent==1.2.2
 greenlet==0.4.12
