@@ -1,0 +1,8 @@
+4b9092c93031104479d60425cc5bc152ceda3314:WebHacking/100-BadPlugin/docker-compose.yml:generic-api-key:19
+1fdd53e362a1abc9295c46095fc4a4e9d08c45d9:Pwnable/200-ReadEmail/tests/t_app.py:generic-api-key:27
+1fdd53e362a1abc9295c46095fc4a4e9d08c45d9:Pwnable/200-ReadEmail/tests/t_app.py:hashicorp-tf-password:31
+2afbefefc0a77ae56b2e258b8c7ae785eb93d392:Pwnable/200-ReadEmail/SOLUTION.md:generic-api-key:22
+b699e9fc8e16a4fac2750a7889f89b5dd99e13d3:Pwnable/200-ReadEmail/app/views.py:generic-api-key:14
+1df66d76b09a89ee0746ff9220a8dcdd165309c7:Pwnable/200-FromUserToAdmin/src/settings.py:generic-api-key:4
+1df66d76b09a89ee0746ff9220a8dcdd165309c7:Pwnable/200-FromUserToAdmin/src/settings.py:generic-api-key:5
+68bebe894c1f82a2c246f7a3cfdb015814d9c9f9:WebHacking/100-MicroServicesEscalation/tests/t_app.py:hashicorp-tf-password:25
